@@ -15,6 +15,9 @@ class ViewController: UIViewController {
     let activityManager = CMMotionActivityManager()
     let pedometer = CMPedometer()
 
+    @IBOutlet weak var activityLabel: UILabel!
+    
+    @IBOutlet weak var stepCounter: UISlider!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -37,6 +40,7 @@ class ViewController: UIViewController {
                 // unwrap the activity and dispaly
                 if let unwrappedActivity = activity {
                     print("%@",unwrappedActivity.description)
+                    self.activityLabel.text = "Walking: \(unwrappedActivity.walking)"
                 }
             }
         }
@@ -49,6 +53,7 @@ class ViewController: UIViewController {
             {(pedData:CMPedometerData?, error:NSError?)->Void in
                 if pedData != nil {
                     print("\(pedData!.description)")
+                    self.stepCounter.value = (pedData?.numberOfSteps.floatValue)!
                 }
             }
         }

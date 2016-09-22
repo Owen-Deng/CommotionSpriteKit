@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,11 +17,34 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Z9-fb-BZE">
+                                <rect key="frame" x="279" y="289" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="QUl-4D-jcO">
+                                <rect key="frame" x="18" y="318" width="564" height="31"/>
+                            </slider>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1Z9-fb-BZE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZWW-FC-KQe"/>
+                            <constraint firstItem="QUl-4D-jcO" firstAttribute="top" secondItem="1Z9-fb-BZE" secondAttribute="bottom" constant="8" symbolic="YES" id="dmV-PW-45t"/>
+                            <constraint firstItem="QUl-4D-jcO" firstAttribute="centerX" secondItem="1Z9-fb-BZE" secondAttribute="centerX" id="m9N-yw-uW6"/>
+                            <constraint firstItem="1Z9-fb-BZE" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="o9S-pU-8pU"/>
+                            <constraint firstItem="QUl-4D-jcO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="p2y-Td-BIf"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="activityLabel" destination="1Z9-fb-BZE" id="IZF-ug-hcY"/>
+                        <outlet property="stepCounter" destination="QUl-4D-jcO" id="PrR-Yq-TKW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="510" y="309"/>
         </scene>
     </scenes>
 </document>
