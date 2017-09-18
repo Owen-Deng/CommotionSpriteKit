@@ -35,7 +35,7 @@ class ViewController: UIViewController {
         // is activity is available
         if CMMotionActivityManager.isActivityAvailable(){
             // update from this queue (should we use the MAIN queue here??.... )
-            self.activityManager.startActivityUpdatesToQueue(NSOperationQueue.mainQueue())
+            self.activityManager.startActivityUpdates(to: OperationQueue.main)
             {(activity:CMMotionActivity?)->Void in
                 // unwrap the activity and dispaly
                 if let unwrappedActivity = activity {
@@ -49,13 +49,13 @@ class ViewController: UIViewController {
     
     func startPedometerMonitoring(){
         if CMPedometer.isStepCountingAvailable(){
-            pedometer.startPedometerUpdatesFromDate(NSDate())
+            pedometer.startUpdates(from: Date())
             {(pedData:CMPedometerData?, error:NSError?)->Void in
                 if pedData != nil {
                     print("\(pedData!.description)")
                     self.stepCounter.value = (pedData?.numberOfSteps.floatValue)!
                 }
-            }
+            } as! CMPedometerHandler as! CMPedometerHandler as! CMPedometerHandler as! CMPedometerHandler as! CMPedometerHandler as! CMPedometerHandler as! CMPedometerHandler
         }
     }
 
