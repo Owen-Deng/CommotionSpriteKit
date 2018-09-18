@@ -11,13 +11,15 @@ import CoreMotion
 
 class ViewController: UIViewController {
     
-    // MARK: class variables
+    // MARK: =====Class Variables=====
     let activityManager = CMMotionActivityManager()
     let pedometer = CMPedometer()
 
+    // MARK: =====UI Outlets=====
     @IBOutlet weak var activityLabel: UILabel!
-    
     @IBOutlet weak var stepCounter: UISlider!
+    
+    // MARK: =====UI Lifecycle=====
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -26,11 +28,8 @@ class ViewController: UIViewController {
         self.startPedometerMonitoring()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+
+    // MARK: =====Motion Methods=====
     func startActivityMonitoring(){
         // is activity is available
         if CMMotionActivityManager.isActivityAvailable(){
@@ -50,12 +49,14 @@ class ViewController: UIViewController {
     func startPedometerMonitoring(){
         if CMPedometer.isStepCountingAvailable(){
             pedometer.startUpdates(from: Date())
-            {(pedData:CMPedometerData?, error:NSError?)->Void in
+            {(pedData:CMPedometerData?, error:Error?)->Void in
                 if pedData != nil {
+                    
+                    // can we display this better?
                     print("\(pedData!.description)")
                     self.stepCounter.value = (pedData?.numberOfSteps.floatValue)!
                 }
-            } as! CMPedometerHandler as! CMPedometerHandler as! CMPedometerHandler as! CMPedometerHandler as! CMPedometerHandler as! CMPedometerHandler as! CMPedometerHandler
+            }
         }
     }
 
