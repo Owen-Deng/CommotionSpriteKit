@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     // MARK: =====UI Outlets=====
     @IBOutlet weak var activityLabel: UILabel!
     @IBOutlet weak var stepCounter: UISlider!
+    @IBOutlet weak var debugLabel: UILabel!
     
     // MARK: =====UI Lifecycle=====
     override func viewDidLoad() {
@@ -53,8 +54,10 @@ class ViewController: UIViewController {
                 if pedData != nil {
                     
                     // can we display this better?
-                    print("\(pedData!.description)")
-                    self.stepCounter.value = (pedData?.numberOfSteps.floatValue)!
+                    DispatchQueue.main.async {
+                        self.debugLabel.text = "\(pedData!.description)"
+                        self.stepCounter.value = (pedData?.numberOfSteps.floatValue)!
+                    }
                 }
             }
         }

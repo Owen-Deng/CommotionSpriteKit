@@ -23,32 +23,45 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Z9-fb-BZE">
-                                <rect key="frame" x="166.5" y="323" width="42" height="21"/>
+                                <rect key="frame" x="166" y="49" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="QUl-4D-jcO">
-                                <rect key="frame" x="14" y="352" width="347" height="31"/>
+                                <rect key="frame" x="14" y="78" width="347" height="31"/>
                             </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EeC-wq-Jcr">
+                                <rect key="frame" x="16" y="116" width="343" height="531"/>
+                                <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="QUl-4D-jcO" firstAttribute="top" secondItem="1Z9-fb-BZE" secondAttribute="bottom" constant="8" id="T0a-37-hAv"/>
+                            <constraint firstItem="QUl-4D-jcO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ZKM-MT-rbp"/>
                             <constraint firstItem="1Z9-fb-BZE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZWW-FC-KQe"/>
-                            <constraint firstItem="QUl-4D-jcO" firstAttribute="top" secondItem="1Z9-fb-BZE" secondAttribute="bottom" constant="8" symbolic="YES" id="dmV-PW-45t"/>
-                            <constraint firstItem="QUl-4D-jcO" firstAttribute="centerX" secondItem="1Z9-fb-BZE" secondAttribute="centerX" id="m9N-yw-uW6"/>
-                            <constraint firstItem="1Z9-fb-BZE" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="o9S-pU-8pU"/>
-                            <constraint firstItem="QUl-4D-jcO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="p2y-Td-BIf"/>
+                            <constraint firstItem="EeC-wq-Jcr" firstAttribute="top" secondItem="QUl-4D-jcO" secondAttribute="bottom" constant="8" id="d7V-Fd-qiq"/>
+                            <constraint firstItem="EeC-wq-Jcr" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="jTS-ui-OjT"/>
+                            <constraint firstItem="QUl-4D-jcO" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="mTK-GF-5VM"/>
+                            <constraint firstItem="1Z9-fb-BZE" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-274" id="o9S-pU-8pU"/>
+                            <constraint firstItem="EeC-wq-Jcr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="q01-GK-UaN"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="EeC-wq-Jcr" secondAttribute="bottom" constant="20" id="sGd-ym-zEw"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="QUl-4D-jcO" secondAttribute="bottom" constant="559" id="uuz-T7-Oga"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="activityLabel" destination="1Z9-fb-BZE" id="IZF-ug-hcY"/>
+                        <outlet property="debugLabel" destination="EeC-wq-Jcr" id="5Zb-HO-CJt"/>
                         <outlet property="stepCounter" destination="QUl-4D-jcO" id="PrR-Yq-TKW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="510" y="309"/>
+            <point key="canvasLocation" x="509.60000000000002" y="308.9955022488756"/>
         </scene>
     </scenes>
 </document>
