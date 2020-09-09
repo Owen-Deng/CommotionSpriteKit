@@ -12,26 +12,7 @@
 		B62ED3A81D7F299D00B503DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B62ED3A61D7F299D00B503DF /* Main.storyboard */; };
 		B62ED3AA1D7F299D00B503DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B62ED3A91D7F299D00B503DF /* Assets.xcassets */; };
 		B62ED3AD1D7F299D00B503DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B62ED3AB1D7F299D00B503DF /* LaunchScreen.storyboard */; };
-		B62ED3B81D7F299D00B503DF /* CommotionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62ED3B71D7F299D00B503DF /* CommotionTests.swift */; };
-		B62ED3C31D7F299D00B503DF /* CommotionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62ED3C21D7F299D00B503DF /* CommotionUITests.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		B62ED3B41D7F299D00B503DF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B62ED3971D7F299D00B503DF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B62ED39E1D7F299D00B503DF;
-			remoteInfo = Commotion;
-		};
-		B62ED3BF1D7F299D00B503DF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B62ED3971D7F299D00B503DF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B62ED39E1D7F299D00B503DF;
-			remoteInfo = Commotion;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		B62ED39F1D7F299D00B503DF /* Commotion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Commotion.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -41,30 +22,10 @@
 		B62ED3A91D7F299D00B503DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B62ED3AC1D7F299D00B503DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B62ED3AE1D7F299D00B503DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B62ED3B31D7F299D00B503DF /* CommotionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CommotionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B62ED3B71D7F299D00B503DF /* CommotionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommotionTests.swift; sourceTree = "<group>"; };
-		B62ED3B91D7F299D00B503DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B62ED3BE1D7F299D00B503DF /* CommotionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CommotionUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B62ED3C21D7F299D00B503DF /* CommotionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommotionUITests.swift; sourceTree = "<group>"; };
-		B62ED3C41D7F299D00B503DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		B62ED39C1D7F299D00B503DF /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B62ED3B01D7F299D00B503DF /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B62ED3BB1D7F299D00B503DF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -78,8 +39,6 @@
 			isa = PBXGroup;
 			children = (
 				B62ED3A11D7F299D00B503DF /* Commotion */,
-				B62ED3B61D7F299D00B503DF /* CommotionTests */,
-				B62ED3C11D7F299D00B503DF /* CommotionUITests */,
 				B62ED3A01D7F299D00B503DF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,8 +47,6 @@
 			isa = PBXGroup;
 			children = (
 				B62ED39F1D7F299D00B503DF /* Commotion.app */,
-				B62ED3B31D7F299D00B503DF /* CommotionTests.xctest */,
-				B62ED3BE1D7F299D00B503DF /* CommotionUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -105,24 +62,6 @@
 				B62ED3AE1D7F299D00B503DF /* Info.plist */,
 			);
 			path = Commotion;
-			sourceTree = "<group>";
-		};
-		B62ED3B61D7F299D00B503DF /* CommotionTests */ = {
-			isa = PBXGroup;
-			children = (
-				B62ED3B71D7F299D00B503DF /* CommotionTests.swift */,
-				B62ED3B91D7F299D00B503DF /* Info.plist */,
-			);
-			path = CommotionTests;
-			sourceTree = "<group>";
-		};
-		B62ED3C11D7F299D00B503DF /* CommotionUITests */ = {
-			isa = PBXGroup;
-			children = (
-				B62ED3C21D7F299D00B503DF /* CommotionUITests.swift */,
-				B62ED3C41D7F299D00B503DF /* Info.plist */,
-			);
-			path = CommotionUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,42 +84,6 @@
 			productReference = B62ED39F1D7F299D00B503DF /* Commotion.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B62ED3B21D7F299D00B503DF /* CommotionTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B62ED3CA1D7F299D00B503DF /* Build configuration list for PBXNativeTarget "CommotionTests" */;
-			buildPhases = (
-				B62ED3AF1D7F299D00B503DF /* Sources */,
-				B62ED3B01D7F299D00B503DF /* Frameworks */,
-				B62ED3B11D7F299D00B503DF /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B62ED3B51D7F299D00B503DF /* PBXTargetDependency */,
-			);
-			name = CommotionTests;
-			productName = CommotionTests;
-			productReference = B62ED3B31D7F299D00B503DF /* CommotionTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		B62ED3BD1D7F299D00B503DF /* CommotionUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B62ED3CD1D7F299D00B503DF /* Build configuration list for PBXNativeTarget "CommotionUITests" */;
-			buildPhases = (
-				B62ED3BA1D7F299D00B503DF /* Sources */,
-				B62ED3BB1D7F299D00B503DF /* Frameworks */,
-				B62ED3BC1D7F299D00B503DF /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B62ED3C01D7F299D00B503DF /* PBXTargetDependency */,
-			);
-			name = CommotionUITests;
-			productName = CommotionUITests;
-			productReference = B62ED3BE1D7F299D00B503DF /* CommotionUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -194,14 +97,7 @@
 					B62ED39E1D7F299D00B503DF = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = APD62CDC25;
-					};
-					B62ED3B21D7F299D00B503DF = {
-						CreatedOnToolsVersion = 7.3.1;
-						TestTargetID = B62ED39E1D7F299D00B503DF;
-					};
-					B62ED3BD1D7F299D00B503DF = {
-						CreatedOnToolsVersion = 7.3.1;
-						TestTargetID = B62ED39E1D7F299D00B503DF;
+						LastSwiftMigration = 1170;
 					};
 				};
 			};
@@ -220,8 +116,6 @@
 			projectRoot = "";
 			targets = (
 				B62ED39E1D7F299D00B503DF /* Commotion */,
-				B62ED3B21D7F299D00B503DF /* CommotionTests */,
-				B62ED3BD1D7F299D00B503DF /* CommotionUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -237,20 +131,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B62ED3B11D7F299D00B503DF /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B62ED3BC1D7F299D00B503DF /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -263,36 +143,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B62ED3AF1D7F299D00B503DF /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B62ED3B81D7F299D00B503DF /* CommotionTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B62ED3BA1D7F299D00B503DF /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B62ED3C31D7F299D00B503DF /* CommotionUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		B62ED3B51D7F299D00B503DF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B62ED39E1D7F299D00B503DF /* Commotion */;
-			targetProxy = B62ED3B41D7F299D00B503DF /* PBXContainerItemProxy */;
-		};
-		B62ED3C01D7F299D00B503DF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B62ED39E1D7F299D00B503DF /* Commotion */;
-			targetProxy = B62ED3BF1D7F299D00B503DF /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		B62ED3A61D7F299D00B503DF /* Main.storyboard */ = {
@@ -429,7 +280,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SMU.Commotion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -442,53 +293,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SMU.Commotion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-			};
-			name = Release;
-		};
-		B62ED3CB1D7F299D00B503DF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = CommotionTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = SMU.CommotionTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Commotion.app/Commotion";
-			};
-			name = Debug;
-		};
-		B62ED3CC1D7F299D00B503DF /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = CommotionTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = SMU.CommotionTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Commotion.app/Commotion";
-			};
-			name = Release;
-		};
-		B62ED3CE1D7F299D00B503DF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = CommotionUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = SMU.CommotionUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = Commotion;
-			};
-			name = Debug;
-		};
-		B62ED3CF1D7F299D00B503DF /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = CommotionUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = SMU.CommotionUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = Commotion;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -509,24 +314,6 @@
 			buildConfigurations = (
 				B62ED3C81D7F299D00B503DF /* Debug */,
 				B62ED3C91D7F299D00B503DF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B62ED3CA1D7F299D00B503DF /* Build configuration list for PBXNativeTarget "CommotionTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B62ED3CB1D7F299D00B503DF /* Debug */,
-				B62ED3CC1D7F299D00B503DF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B62ED3CD1D7F299D00B503DF /* Build configuration list for PBXNativeTarget "CommotionUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B62ED3CE1D7F299D00B503DF /* Debug */,
-				B62ED3CF1D7F299D00B503DF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
