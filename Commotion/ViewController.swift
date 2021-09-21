@@ -48,15 +48,16 @@ class ViewController: UIViewController {
     }
     
     func startPedometerMonitoring(){
+        // check if pedometer is okay to use
         if CMPedometer.isStepCountingAvailable(){
             pedometer.startUpdates(from: Date())
             {(pedData:CMPedometerData?, error:Error?)->Void in
-                if pedData != nil {
+                if let data = pedData {
                     
-                    // can we display this better?
+                    // display the output directly on the phone
                     DispatchQueue.main.async {
-                        self.debugLabel.text = "\(pedData!.description)"
-                        self.stepCounter.value = (pedData?.numberOfSteps.floatValue)!
+                        self.debugLabel.text = "\(data.description)"
+                        self.stepCounter.value = data.numberOfSteps.floatValue
                     }
                 }
             }
