@@ -37,10 +37,13 @@ class ViewController: UIViewController {
             // update from this queue (should we use the MAIN queue here??.... )
             self.activityManager.startActivityUpdates(to: OperationQueue.main)
             {(activity:CMMotionActivity?)->Void in
-                // unwrap the activity and dispaly
+                // unwrap the activity and display
+                // using the real time pedometer influences how often we get activity updates...
+                // so these updates can come through less often than we may want
                 if let unwrappedActivity = activity {
+                    // Print if we are walking or running
                     print("%@",unwrappedActivity.description)
-                    self.activityLabel.text = "Walking: \(unwrappedActivity.walking)"
+                    self.activityLabel.text = "🚶: \(unwrappedActivity.walking), 🏃: \(unwrappedActivity.running)"
                 }
             }
         }
@@ -50,13 +53,19 @@ class ViewController: UIViewController {
     func startPedometerMonitoring(){
         // check if pedometer is okay to use
         if CMPedometer.isStepCountingAvailable(){
+            // start updating the pedometer from the current date and time
             pedometer.startUpdates(from: Date())
             {(pedData:CMPedometerData?, error:Error?)->Void in
+                
+                // if no errors, update the main UI
                 if let data = pedData {
                     
                     // display the output directly on the phone
                     DispatchQueue.main.async {
+                        // this goes into the large gray area on view
                         self.debugLabel.text = "\(data.description)"
+                        
+                        // this updates the slider with number of steps
                         self.stepCounter.value = data.numberOfSteps.floatValue
                     }
                 }
