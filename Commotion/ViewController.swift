@@ -17,8 +17,8 @@ class ViewController: UIViewController {
 
     // MARK: =====UI Outlets=====
     @IBOutlet weak var activityLabel: UILabel!
-    @IBOutlet weak var stepCounter: UISlider!
     @IBOutlet weak var debugLabel: UILabel!
+    @IBOutlet weak var progressBar: UIProgressView!
     
     // MARK: =====UI Lifecycle=====
     override func viewDidLoad() {
@@ -65,8 +65,9 @@ class ViewController: UIViewController {
                         // this goes into the large gray area on view
                         self.debugLabel.text = "\(data.description)"
                         
-                        // this updates the slider with number of steps
-                        self.stepCounter.value = data.numberOfSteps.floatValue
+                        // this updates the progress bar with number of steps, assuming 100 is the maximum for the steps
+                        
+                        self.progressBar.progress = data.numberOfSteps.floatValue / 100
                     }
                 }
             }

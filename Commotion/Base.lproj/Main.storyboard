@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,12 +22,9 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Z9-fb-BZE">
                                 <rect key="frame" x="166.5" y="49" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" systemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="QUl-4D-jcO">
-                                <rect key="frame" x="14" y="78" width="347" height="31"/>
-                            </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Debugging Outputs" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EeC-wq-Jcr">
                                 <rect key="frame" x="16" y="116" width="343" height="531"/>
                                 <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -35,25 +32,27 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <progressView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TkL-HM-JS8">
+                                <rect key="frame" x="16" y="90" width="343" height="4"/>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="QUl-4D-jcO" firstAttribute="top" secondItem="1Z9-fb-BZE" secondAttribute="bottom" constant="8" id="T0a-37-hAv"/>
-                            <constraint firstItem="QUl-4D-jcO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ZKM-MT-rbp"/>
+                            <constraint firstItem="EeC-wq-Jcr" firstAttribute="top" secondItem="TkL-HM-JS8" secondAttribute="bottom" constant="22" id="94R-lP-Kh6"/>
+                            <constraint firstItem="TkL-HM-JS8" firstAttribute="top" secondItem="1Z9-fb-BZE" secondAttribute="bottom" constant="20" id="Cnd-Ra-NST"/>
+                            <constraint firstItem="TkL-HM-JS8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="QF1-C5-4nf"/>
                             <constraint firstItem="1Z9-fb-BZE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZWW-FC-KQe"/>
-                            <constraint firstItem="EeC-wq-Jcr" firstAttribute="top" secondItem="QUl-4D-jcO" secondAttribute="bottom" constant="8" id="d7V-Fd-qiq"/>
                             <constraint firstItem="EeC-wq-Jcr" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="jTS-ui-OjT"/>
-                            <constraint firstItem="QUl-4D-jcO" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="mTK-GF-5VM"/>
                             <constraint firstItem="1Z9-fb-BZE" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-274" id="o9S-pU-8pU"/>
                             <constraint firstItem="EeC-wq-Jcr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="q01-GK-UaN"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="EeC-wq-Jcr" secondAttribute="bottom" constant="20" id="sGd-ym-zEw"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="QUl-4D-jcO" secondAttribute="bottom" constant="559" id="uuz-T7-Oga"/>
+                            <constraint firstItem="TkL-HM-JS8" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="yuF-O8-erS"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="activityLabel" destination="1Z9-fb-BZE" id="IZF-ug-hcY"/>
                         <outlet property="debugLabel" destination="EeC-wq-Jcr" id="5Zb-HO-CJt"/>
-                        <outlet property="stepCounter" destination="QUl-4D-jcO" id="PrR-Yq-TKW"/>
+                        <outlet property="progressBar" destination="TkL-HM-JS8" id="IWq-U9-3D1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -61,4 +60,9 @@
             <point key="canvasLocation" x="509.60000000000002" y="308.9955022488756"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
