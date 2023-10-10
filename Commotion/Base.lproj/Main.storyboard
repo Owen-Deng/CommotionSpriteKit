@@ -28,25 +28,25 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today's steps:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m6N-Rl-njc">
-                                <rect key="frame" x="36" y="84" width="110" height="21"/>
+                                <rect key="frame" x="36" y="84" width="303" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yesterday's steps:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vrd-Er-sCU">
-                                <rect key="frame" x="36" y="125" width="139" height="21"/>
+                                <rect key="frame" x="36" y="125" width="303" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current status:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bB3-7d-MI8">
-                                <rect key="frame" x="36" y="246" width="114" height="21"/>
+                                <rect key="frame" x="36" y="246" width="303" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steps to daily goal:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uFb-gW-cat">
-                                <rect key="frame" x="36" y="166" width="145" height="21"/>
+                                <rect key="frame" x="36" y="166" width="303" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -57,9 +57,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TOG-ig-1W7">
-                                <rect key="frame" x="135" y="202" width="224" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TOG-ig-1W7">
+                                <rect key="frame" x="135" y="202" width="204" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
@@ -68,17 +68,21 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Qfj-kn-TMJ" secondAttribute="bottom" constant="20" id="1AS-dV-Iv7"/>
                             <constraint firstItem="VuK-C3-yKx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="2mI-tb-3i6"/>
                             <constraint firstItem="TOG-ig-1W7" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" constant="-20" id="33b-Jv-7kW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="m6N-Rl-njc" secondAttribute="trailing" constant="20" id="3Da-QA-8N1"/>
                             <constraint firstItem="TOG-ig-1W7" firstAttribute="leading" secondItem="VuK-C3-yKx" secondAttribute="trailing" constant="20" id="9eV-AG-W68"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bB3-7d-MI8" secondAttribute="trailing" constant="20" id="9gC-ce-Rfz"/>
                             <constraint firstItem="m6N-Rl-njc" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="AJB-fc-5bC"/>
                             <constraint firstItem="Vrd-Er-sCU" firstAttribute="top" secondItem="m6N-Rl-njc" secondAttribute="bottom" constant="20" id="CLx-Kj-J1V"/>
                             <constraint firstItem="Vrd-Er-sCU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="Cgn-Ki-cu6"/>
                             <constraint firstItem="uFb-gW-cat" firstAttribute="top" secondItem="Vrd-Er-sCU" secondAttribute="bottom" constant="20" id="DTL-uX-Di0"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="uFb-gW-cat" secondAttribute="trailing" constant="20" id="EBe-SM-hld"/>
                             <constraint firstItem="bB3-7d-MI8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="Frs-VG-Rq5"/>
                             <constraint firstItem="m6N-Rl-njc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="LJI-zV-7W0"/>
                             <constraint firstItem="uFb-gW-cat" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="Qma-zw-GUt"/>
                             <constraint firstItem="Qfj-kn-TMJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Y2n-m6-fnC"/>
                             <constraint firstItem="bB3-7d-MI8" firstAttribute="top" secondItem="TOG-ig-1W7" secondAttribute="bottom" constant="10" id="Yfs-VC-Cdt"/>
                             <constraint firstItem="TOG-ig-1W7" firstAttribute="top" secondItem="uFb-gW-cat" secondAttribute="bottom" constant="15" id="kjd-bs-4pN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Vrd-Er-sCU" secondAttribute="trailing" constant="20" id="qLv-kR-uTf"/>
                             <constraint firstItem="VuK-C3-yKx" firstAttribute="top" secondItem="uFb-gW-cat" secondAttribute="bottom" constant="20" id="vx1-pV-aeN"/>
                         </constraints>
                     </view>

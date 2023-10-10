@@ -15,7 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5AA32F1E2AD4E8750020E672 /* CommotionSpriteKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = CommotionSpriteKit.app; path = "/Users/owen/Documents/Commotion/build/Debug-iphoneos/CommotionSpriteKit.app"; sourceTree = "<absolute>"; };
+		5AA32F1F2AD4ECDF0020E672 /* CommotionSpriteKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommotionSpriteKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B62ED3A21D7F299D00B503DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B62ED3A41D7F299D00B503DF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B62ED3A71D7F299D00B503DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -39,6 +39,7 @@
 			isa = PBXGroup;
 			children = (
 				B62ED3A11D7F299D00B503DF /* Commotion */,
+				5AA32F1F2AD4ECDF0020E672 /* CommotionSpriteKit.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -72,7 +73,7 @@
 			);
 			name = Commotion;
 			productName = Commotion;
-			productReference = 5AA32F1E2AD4E8750020E672 /* CommotionSpriteKit.app */;
+			productReference = 5AA32F1F2AD4ECDF0020E672 /* CommotionSpriteKit.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -273,7 +274,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = F69WJ27LN4;
 				INFOPLIST_FILE = Commotion/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -290,7 +291,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = F69WJ27LN4;
 				INFOPLIST_FILE = Commotion/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
