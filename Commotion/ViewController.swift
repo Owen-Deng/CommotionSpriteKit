@@ -25,8 +25,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        self.startActivityMonitoring()
-        self.startPedometerMonitoring()
+        //self.startActivityMonitoring()
+        //self.startPedometerMonitoring()
     }
 
 
