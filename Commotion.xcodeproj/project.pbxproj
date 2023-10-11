@@ -16,6 +16,7 @@
 		B62ED3AD1D7F299D00B503DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B62ED3AB1D7F299D00B503DF /* LaunchScreen.storyboard */; };
 		CC05C77A2AD7168100D6C605 /* FruitGame.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC05C7792AD7168100D6C605 /* FruitGame.storyboard */; };
 		CC05C77C2AD716BE00D6C605 /* FruitGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC05C77B2AD716BE00D6C605 /* FruitGameViewController.swift */; };
+		CC05C77E2AD71B3B00D6C605 /* FruitGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC05C77D2AD71B3B00D6C605 /* FruitGameScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		B62ED3AE1D7F299D00B503DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC05C7792AD7168100D6C605 /* FruitGame.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FruitGame.storyboard; sourceTree = "<group>"; };
 		CC05C77B2AD716BE00D6C605 /* FruitGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitGameViewController.swift; sourceTree = "<group>"; };
+		CC05C77D2AD71B3B00D6C605 /* FruitGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitGameScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				B62ED3AB1D7F299D00B503DF /* LaunchScreen.storyboard */,
 				B62ED3AE1D7F299D00B503DF /* Info.plist */,
 				CC05C7792AD7168100D6C605 /* FruitGame.storyboard */,
+				CC05C77D2AD71B3B00D6C605 /* FruitGameScene.swift */,
 				CC05C77B2AD716BE00D6C605 /* FruitGameViewController.swift */,
 			);
 			path = Commotion;
@@ -145,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5AA773182AD610B6006B6F03 /* MotionModel.swift in Sources */,
+				CC05C77E2AD71B3B00D6C605 /* FruitGameScene.swift in Sources */,
 				CC05C77C2AD716BE00D6C605 /* FruitGameViewController.swift in Sources */,
 				B62ED3A51D7F299D00B503DF /* ViewController.swift in Sources */,
 				B62ED3A31D7F299D00B503DF /* AppDelegate.swift in Sources */,
