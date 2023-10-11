@@ -14,66 +14,70 @@ class ViewController: UIViewController {
     // MARK: =====Class Variables=====
     let activityManager = CMMotionActivityManager()
     let pedometer = CMPedometer()
-
+    let motionModel = MotionModel.sharedInstance
+    let configModel = ConfigModel.sharedInstance
+    var dailyStepsGoal:Int64 = 0
+    var numOfStepsToday:Int64 = 0
     // MARK: =====UI Outlets=====
-    @IBOutlet weak var activityLabel: UILabel!
-    @IBOutlet weak var debugLabel: UILabel!
-    @IBOutlet weak var progressBar: UIProgressView!
-    
+    @IBOutlet weak var todaySteps: UILabel!
+    @IBOutlet weak var yesterdaySteps: UILabel!
+    @IBOutlet weak var stepsToGoal: UILabel!
+    @IBOutlet weak var currentStatus: UILabel!
+    @IBOutlet weak var dailyGoal: UITextField!
     // MARK: =====UI Lifecycle=====
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        dailyStepsGoal = configModel.dailyGoal
+        dailyGoal.text = "\(dailyStepsGoal)"
+        addDoneButtonOnKeyboard()
         
-        //self.startActivityMonitoring()
-        //self.startPedometerMonitoring()
-    }
-
-
-    // MARK: =====Motion Methods=====
-    func startActivityMonitoring(){
-        // is activity is available
-        if CMMotionActivityManager.isActivityAvailable(){
-            // update from this queue (should we use the MAIN queue here??.... )
-            self.activityManager.startActivityUpdates(to: OperationQueue.main)
-            {(activity:CMMotionActivity?)->Void in
-                // unwrap the activity and display
-                // using the real time pedometer influences how often we get activity updates...
-                // so these updates can come through less often than we may want
-                if let unwrappedActivity = activity {
-                    // Print if we are walking or running
-                    print("%@",unwrappedActivity.description)
-                    self.activityLabel.text = "🚶: \(unwrappedActivity.walking), 🏃: \(unwrappedActivity.running)"
-                }
+        // get yesterday's steps
+        motionModel.getYesterdaySteps(){(steps:Int64) in
+            DispatchQueue.main.async {
+                self.yesterdaySteps.text! += " \(steps)"
+            }
+        }
+        // update today's steps
+        motionModel.updateTodaySteps(){(steps:Int64) in
+            DispatchQueue.main.async { [self] in
+                numOfStepsToday = steps
+                self.todaySteps.text! = "Today's steps: \(numOfStepsToday)"
+                stepsToGoal.text = "Steps to daily goal: \(max(0, dailyStepsGoal - numOfStepsToday))"
+            }
+        }
+        // update status
+        motionModel.updateCurrentStatus(){(statusText:String) in
+            DispatchQueue.main.async {
+                self.currentStatus.text! = "Current status: \(statusText)"
             }
         }
         
     }
     
-    func startPedometerMonitoring(){
-        // check if pedometer is okay to use
-        if CMPedometer.isStepCountingAvailable(){
-            // start updating the pedometer from the current date and time
-            pedometer.startUpdates(from: Date())
-            {(pedData:CMPedometerData?, error:Error?)->Void in
-                
-                // if no errors, update the main UI
-                if let data = pedData {
-                    
-                    // display the output directly on the phone
-                    DispatchQueue.main.async {
-                        // this goes into the large gray area on view
-                        self.debugLabel.text = "\(data.description)"
-                        
-                        // this updates the progress bar with number of steps, assuming 100 is the maximum for the steps
-                        
-                        self.progressBar.progress = data.numberOfSteps.floatValue / 100
-                    }
-                }
-            }
+
+    // add a Done button on the numpad for dailyGoal
+    func addDoneButtonOnKeyboard() {
+        let keyboardToolbar = UIToolbar()
+        keyboardToolbar.sizeToFit()
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
+                                            target: nil, action: nil)
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done,
+                                         target: self, action: #selector(dailyGoalDone))
+        keyboardToolbar.items = [flexibleSpace, doneButton]
+        dailyGoal.inputAccessoryView = keyboardToolbar
+    }
+    
+    // Done button handler
+    @objc func dailyGoalDone(){
+        dailyGoal.resignFirstResponder()
+        if let goalSteps = Int64(dailyGoal.text!){
+            dailyStepsGoal = goalSteps
+            stepsToGoal.text = "Steps to daily goal: \(max(0, dailyStepsGoal - numOfStepsToday))"
+            configModel.dailyGoal = goalSteps
         }
     }
 
-
 }
+
 

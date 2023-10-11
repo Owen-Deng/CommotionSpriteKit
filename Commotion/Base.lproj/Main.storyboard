@@ -39,9 +39,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current status:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bB3-7d-MI8">
-                                <rect key="frame" x="36" y="246" width="303" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current status: " lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" sizingRule="oversize" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bB3-7d-MI8">
+                                <rect key="frame" x="36" y="246" width="303" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="lAZ-TP-03g"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -60,7 +63,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TOG-ig-1W7">
                                 <rect key="frame" x="135" y="202" width="204" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -89,6 +92,13 @@
                     <navigationItem key="navigationItem" id="jfb-T8-gOd">
                         <nil key="title"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="currentStatus" destination="bB3-7d-MI8" id="hcy-gC-lI5"/>
+                        <outlet property="dailyGoal" destination="TOG-ig-1W7" id="WpN-Gx-5BQ"/>
+                        <outlet property="stepsToGoal" destination="uFb-gW-cat" id="KO5-Cv-ygd"/>
+                        <outlet property="todaySteps" destination="m6N-Rl-njc" id="dpN-9N-tAM"/>
+                        <outlet property="yesterdaySteps" destination="Vrd-Er-sCU" id="DsA-Jm-Gm6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5AA773182AD610B6006B6F03 /* MotionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA773172AD610B1006B6F03 /* MotionModel.swift */; };
+		5AA7731A2AD617E1006B6F03 /* ConfigModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA773192AD617E1006B6F03 /* ConfigModel.swift */; };
 		B62ED3A31D7F299D00B503DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62ED3A21D7F299D00B503DF /* AppDelegate.swift */; };
 		B62ED3A51D7F299D00B503DF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62ED3A41D7F299D00B503DF /* ViewController.swift */; };
 		B62ED3A81D7F299D00B503DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B62ED3A61D7F299D00B503DF /* Main.storyboard */; };
@@ -16,6 +18,8 @@
 
 /* Begin PBXFileReference section */
 		5AA32F1F2AD4ECDF0020E672 /* CommotionSpriteKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommotionSpriteKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5AA773172AD610B1006B6F03 /* MotionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionModel.swift; sourceTree = "<group>"; };
+		5AA773192AD617E1006B6F03 /* ConfigModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigModel.swift; sourceTree = "<group>"; };
 		B62ED3A21D7F299D00B503DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B62ED3A41D7F299D00B503DF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B62ED3A71D7F299D00B503DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -46,6 +50,8 @@
 		B62ED3A11D7F299D00B503DF /* Commotion */ = {
 			isa = PBXGroup;
 			children = (
+				5AA773172AD610B1006B6F03 /* MotionModel.swift */,
+				5AA773192AD617E1006B6F03 /* ConfigModel.swift */,
 				B62ED3A21D7F299D00B503DF /* AppDelegate.swift */,
 				B62ED3A41D7F299D00B503DF /* ViewController.swift */,
 				B62ED3A61D7F299D00B503DF /* Main.storyboard */,
@@ -131,8 +137,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AA773182AD610B6006B6F03 /* MotionModel.swift in Sources */,
 				B62ED3A51D7F299D00B503DF /* ViewController.swift in Sources */,
 				B62ED3A31D7F299D00B503DF /* AppDelegate.swift in Sources */,
+				5AA7731A2AD617E1006B6F03 /* ConfigModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
