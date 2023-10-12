@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SpriteKit
 
 class FruitGameViewController: UIViewController {
 
@@ -14,6 +15,15 @@ class FruitGameViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        //load the skview
+        let scene=FruitGameScene(size: view.bounds.size)
+        let skView = view as! SKView
+        skView.showsFPS=true
+        skView.showsNodeCount=true
+        skView.ignoresSiblingOrder=true
+        scene.scaleMode = .resizeFill
+        skView.presentScene(scene)
+        
     }
     
 
