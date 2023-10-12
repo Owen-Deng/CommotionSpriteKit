@@ -15,8 +15,11 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
     
     // MARK: Properties
     //Static properties for the static.
-    static let ShurikenImageName="Shuriken"
-    static let WatermelonImageName="Watermelon"
+     let SHURIKENIMAGENAME:String="Shuriken"
+     let WATERMELONIMAGENAME:String="Watermelon"
+     let ADDFRUITKEYNAME:String="addFruit"
+    var gameRunning=true
+    
     // pending score label
     var scroeNow:Int = 0{
         willSet(newValue){
@@ -26,10 +29,18 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    lazy var  addFruitsAction=SKAction.run {
+        self.addFruits()
+    }
+    lazy var  repeatAction=SKAction.repeatForever(SKAction.sequence([SKAction.run {
+        self.addFruits()
+    },SKAction.wait(forDuration: 1.5)]))
+    var nodeTimer:Timer?
+    
     
     
     // ninja shuriken(special dart), player controll the shuriken to move to the fruit and cut the target to get the socer
-    let player = SKSpriteNode(imageNamed:  ShurikenImageName)
+    lazy var player = SKSpriteNode(imageNamed:  SHURIKENIMAGENAME)
     
     
     // the skview is initialed and add the player into scence
@@ -39,9 +50,11 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
         backgroundColor=SKColor.white
         player.position=CGPoint(x: size.width*0.5, y: size.height*0.5)
         addChild(player) // add the player
-            //pending add fruit
            // pending add the score
-        // pending for the update repeatly
+
+        //when start game directly start the game
+        self.run(repeatAction,withKey: ADDFRUITKEYNAME)
+        
     }
     
     // add score node label into the secene
@@ -51,22 +64,49 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
     
     // add the fruit into secene to be the target of the shuriken
     func addFruits(){
+        print("add fruit")
+        let fruitNode = SKSpriteNode(imageNamed: WATERMELONIMAGENAME)
+        fruitNode.size=CGSize(width: size.width*0.1, height: size.height*0.1)
+        
+        let startY=random()
         // xy the fruit add
-        // determing the speed of fruit
+        // determing the speed of fruitam
         // action-- moving
+    }
+    
+    
+    // generat the postion about the fruit in the random of the whole scene
+    func fruitsPosition()->CGPoint{
+        var position=CGPoint(x: 0, y: 0)//default place
+        let randomX=random()
+        
+        return position
     }
     
     // touch to pause the game
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        //pause funciont
+        if gameRunning==true{
+            self.removeAction(forKey: ADDFRUITKEYNAME)// stop generate the fruit
+            gameRunning=false
+        }else {
+            self.run(repeatAction, withKey: ADDFRUITKEYNAME)
+            gameRunning=true
+        }
     }
     
     
     
-    // random funciont peding
+    
+    // random funcion
+    func random()->CGFloat{
+        return CGFloat(Float(arc4random())/Float(Int.max))
+    }
+    
+    func random(min:CGFloat,max:CGFloat)->CGFloat{
+        return random()*(max-min)+min
+    }
     
     
-    
-    // cpllision detetion
+    // conllision detetion
     
 }
