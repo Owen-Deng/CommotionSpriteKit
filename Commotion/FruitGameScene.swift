@@ -31,9 +31,7 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    lazy var  addFruitsAction=SKAction.run {
-        self.addFruits()
-    }
+    // this is repeatAction for adding fruit and
     lazy var  repeatAction=SKAction.repeatForever(SKAction.sequence([SKAction.run {
         self.addFruits()
     },SKAction.wait(forDuration: 1.5)]))
@@ -51,10 +49,9 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate=self
         backgroundColor=SKColor.white
-        player.position=CGPoint(x: size.width*0.5, y: size.height*0.5)
-        addChild(player) // add the player
+   
            // pending add the score
-
+        self.addPlayer()
         //when start game directly start the game
         self.run(repeatAction,withKey: ADDFRUIT_KEYNAME)
         
@@ -62,29 +59,37 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
     
     // add score node label into the secene
     func addSocre(){
-        
     }
+    
+    
+    // set the player
+    func addPlayer(){
+        player.position=CGPoint(x: size.width*0.5, y: size.height*0.5)
+        player.size=CGSize(width: size.width*0.12, height: size.width*0.12)
+        self.addChild(player) // add the player
+    }
+    
     
     // add the fruit into secene to be the target of the shuriken
     // this version is about the static position that use blade to cut the fruit
     func addFruits(){
-        print("add fruit")
         let fruitNode = SKSpriteNode(imageNamed: WATERMELON_IMAGENAME)
-        fruitNode.size=CGSize(width: size.width*0.1, height: size.height*0.1)
+        fruitNode.size=CGSize(width: size.width*0.1, height: size.width*0.1)
         // position for fruit is random and in the whole
         fruitNode.position=randomFruitsPosition()
         fruitNode.physicsBody?.contactTestBitMask=FRUIT_CATEGORY
         fruitNode.physicsBody?.collisionBitMask=FRUIT_CATEGORY
         fruitNode.physicsBody?.categoryBitMask=FRUIT_CATEGORY
+        print(fruitNode.position)
         self.addChild(fruitNode)
     }
     
     
     // generat the postion about the fruit in the random of the whole scene
     func randomFruitsPosition()->CGPoint{
-        let randomX=random( min: CGFloat(0.1), max: CGFloat(0.9) )
-        let randomY=random(min: CGFloat(0.1), max: CGFloat(0.9) )
-        return CGPoint(x: randomX, y: randomY)
+        let randomX=random(min: CGFloat(0.1), max: CGFloat(0.9))
+        let randomY=random(min: CGFloat(0.1), max: CGFloat(0.9))
+        return CGPoint(x: size.width*randomX, y: size.height*randomY)
     }
     
     // touch to pause the game
@@ -99,11 +104,9 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
     }
     
     
-    
-    
-    // random funcion
+    // random function
     func random()->CGFloat{
-        return CGFloat(Float(arc4random())/Float(Int.max))
+        return CGFloat(Float(arc4random())/Float(UInt32.max))
     }
     
     func random(min:CGFloat,max:CGFloat)->CGFloat{
