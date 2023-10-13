@@ -22,11 +22,12 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
     var gameRunning=true
     
     
-    // pending score label
+    // seting score label
+    let scoreLabel=SKLabelNode(fontNamed: "Chalkduster")
     var scroeNow:Int = 0{
         willSet(newValue){
             DispatchQueue.main.async {
-                //update the lable in scence
+                self.scoreLabel.text="Score: \(newValue)"
             }
         }
     }
@@ -34,7 +35,7 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
     // this is repeatAction for adding fruit and
     lazy var  repeatAction=SKAction.repeatForever(SKAction.sequence([SKAction.run {
         self.addFruits()
-    },SKAction.wait(forDuration: 1.5)]))
+    },SKAction.wait(forDuration: 2)]))
     var nodeTimer:Timer?
     
     
@@ -50,15 +51,19 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
         physicsWorld.contactDelegate=self
         backgroundColor=SKColor.white
    
-           // pending add the score
-        self.addPlayer()
-        //when start game directly start the game
-        self.run(repeatAction,withKey: ADDFRUIT_KEYNAME)
+        self.addSocre() //add the score to save the date
+        self.addPlayer()  // add the player blade on the stage
+        self.run(repeatAction,withKey: ADDFRUIT_KEYNAME)    //when start game directly start the game
         
     }
     
     // add score node label into the secene
     func addSocre(){
+        scoreLabel.text="Score:0"
+        scoreLabel.fontSize=20
+        scoreLabel.fontColor=SKColor.red
+        scoreLabel.position=CGPoint(x: frame.midX, y: frame.minY)
+        addChild(scoreLabel)
     }
     
     
