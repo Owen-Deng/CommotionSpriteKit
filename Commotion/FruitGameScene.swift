@@ -199,6 +199,10 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
     }
     
     
+    // move the player shurikan
+    override func update(_ currentTime: TimeInterval) {
+        
+    }
     
     
     //pending move of shuriken
