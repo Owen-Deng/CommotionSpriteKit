@@ -114,19 +114,23 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
     
     //contact delegat method
     func didBegin(_ contact: SKPhysicsContact) {
-        var firstBody:SKPhysicsBody
-        var secondBody:SKPhysicsBody
+        var secondBody:SKPhysicsBody = contact.bodyB
+        var isHit=true
         if contact.bodyA.node == player {
-            firstBody=contact.bodyA
+            print("BodyB is Fruit")
             secondBody=contact.bodyB
-        }else{
-            firstBody=contact.bodyB
+        }else if contact.bodyB.node==player{
+            print("BodyA is Fruit")
             secondBody=contact.bodyA
+        }else{
+            isHit=false
         }
         
-        
-        
-        
+        if isHit{
+            if let fruit = secondBody.node as? SKSpriteNode{
+                shurikenDidCollideWithFruit(shuriken: self.player, fruit: fruit)
+            }
+        }
     }
     
     
