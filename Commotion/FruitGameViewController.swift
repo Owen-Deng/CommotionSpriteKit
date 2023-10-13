@@ -3,17 +3,17 @@
 //  Commotion
 //
 //  Created by RongWei Ji on 10/11/23.
-//  Copyright © 2023 Eric Larson. All rights reserved.
+//  Copyright © 2023 Rongwei Ji. All rights reserved.
 //
 
 import UIKit
 import SpriteKit
 
 class FruitGameViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         //load the skview
         let scene=FruitGameScene(size: view.bounds.size)
@@ -26,7 +26,16 @@ class FruitGameViewController: UIViewController {
         
     }
     
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask{
+        return .portrait
+    }
 
+    override var shouldAutorotate: Bool{
+        return false
+    }
+  
+    
     /*
     // MARK: - Navigation
 

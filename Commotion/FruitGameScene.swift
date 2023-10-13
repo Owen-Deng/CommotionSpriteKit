@@ -3,7 +3,7 @@
 //  Commotion
 //
 //  Created by RongWei Ji on 10/11/23.
-//  Copyright © 2023 Eric Larson. All rights reserved.
+//  Copyright © 2023 Rongwei Ji. All rights reserved.
 //
 
 import Foundation
@@ -60,7 +60,7 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
         scoreLabel.text="Score:0"
         scoreLabel.fontSize=20
         scoreLabel.fontColor=SKColor.red
-        scoreLabel.position=CGPoint(x: frame.midX, y: frame.minY)
+        scoreLabel.position=CGPoint(x: frame.midX, y: frame.minY+frame.height*0.05)
         addChild(scoreLabel)
     }
     
