@@ -13,14 +13,14 @@ import CoreMotion
 class FruitGameScene:SKScene, SKPhysicsContactDelegate {
     
     
-    // MARK: Properties
     //Static properties for the static.
     let SHURIKEN_IMAGENAME:String="Shuriken"
     let WATERMELON_IMAGENAME:String="Watermelon"
     let ADDFRUIT_KEYNAME:String="addFruit"
+    let PAUSE_IMAGENAME:String="Pause"
     let FRUIT_CATEGORY:UInt32=0x00000001
-    var gameRunning=true
     
+    var gameRunning=true //flag for the running state, using for stop or start
     
     // seting score label
     let scoreLabel=SKLabelNode(fontNamed: "Chalkduster")
@@ -39,14 +39,12 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
     var nodeTimer:Timer?
     
     
+    lazy var player = SKSpriteNode(imageNamed:  SHURIKEN_IMAGENAME)//ninja shuriken(special dart), player controll the shuriken to move to the fruit
+    lazy var pauseImageNode=SKSpriteNode(imageNamed: PAUSE_IMAGENAME)
     
-    // ninja shuriken(special dart), player controll the shuriken to move to the fruit and cut the target to get the socer
-    lazy var player = SKSpriteNode(imageNamed:  SHURIKEN_IMAGENAME)
     
     
-    // the skview is initialed and add the player into scence
-    //set the scence
-    //set the player's position
+    // the skview is initialed and add the player , set the initial setting into scence
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate=self
         backgroundColor=SKColor.white
@@ -75,6 +73,13 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
     }
     
     
+    // set the Pause image
+    func addPauseImage(){
+        pauseImageNode.size=CGSize(width: size.width*0.3, height: size.width*0.3)
+        pauseImageNode.position=CGPoint(x: size.width*0.5, y: size.height*0.5)
+        self.addChild(pauseImageNode)
+    }
+    
     // add the fruit into secene to be the target of the shuriken
     // this version is about the static position that use blade to cut the fruit
     func addFruits(){
@@ -97,19 +102,21 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
         return CGPoint(x: size.width*randomX, y: size.height*randomY)
     }
     
-    // touch to pause the game
+    // touch to pause the game and restart
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if gameRunning==true{
             self.removeAction(forKey: ADDFRUIT_KEYNAME)// stop generate the fruit
+            addPauseImage()
             gameRunning=false
         }else {
             self.run(repeatAction, withKey: ADDFRUIT_KEYNAME)
+            self.removeChildren(in: [pauseImageNode])
             gameRunning=true
         }
     }
     
     
-    // random function
+    // random function for geting the position
     func random()->CGFloat{
         return CGFloat(Float(arc4random())/Float(UInt32.max))
     }
