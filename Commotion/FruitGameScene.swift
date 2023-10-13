@@ -29,6 +29,9 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
     
     // seting score label
     let scoreLabel=SKLabelNode(fontNamed: "Chalkduster")
+    let timeLabel=SKLabelNode(fontNamed: "Helvetica")
+    var remainTime=30 // 30s of this game
+    var timer:Timer?
     var scroeNow:Int = 0{
         willSet(newValue){
             DispatchQueue.main.async {
@@ -41,7 +44,6 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
     lazy var  repeatAction=SKAction.repeatForever(SKAction.sequence([SKAction.run {
         self.addFruits()
     },SKAction.wait(forDuration: 2)]))
-    var nodeTimer:Timer?
     
     
     lazy var player = SKSpriteNode(imageNamed:  SHURIKEN_IMAGENAME)//ninja shuriken(special dart), player controll the shuriken to move to the fruit
@@ -56,9 +58,43 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
    
         self.addSocre() //add the score to save the date
         self.addPlayer()  // add the player blade on the stage
+        self.addTimeLabel() // add the timer to reminder player this game is 30seconds game
         self.run(repeatAction,withKey: ADDFRUIT_KEYNAME)    //when start game directly start the game
-        
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats:true) //for update the game
+        NotificationCenter.default.addObserver(self, selector: #selector(scenewillLostFocus(_:)), name: Notification.Name("SceneWillLostFocus"), object: nil) // for receive the segue action
     }
+    
+    // function to update the game time reminder
+    @objc func updateTime(){
+        if gameRunning{
+            remainTime=remainTime-1
+            timeLabel.text="00:\(remainTime)"
+            if(remainTime==0){
+                // game over pending
+            }
+        }
+    }
+    
+    // react for the segue from the scene
+    @objc func scenewillLostFocus(_ notification: Notification){
+        if gameRunning==true{
+            self.removeAction(forKey: ADDFRUIT_KEYNAME)// stop generate the fruit
+            addPauseImage()
+            gameRunning=false
+        }
+    }
+    
+    
+    // set the timer
+    func addTimeLabel(){
+        timeLabel.text="00:\(remainTime)"
+        timeLabel.fontSize=40
+        timeLabel.fontColor=SKColor.black
+        timeLabel.position=CGPoint(x: frame.midX, y: frame.maxY-frame.height*0.2)
+        addChild(timeLabel)
+    }
+    
+    
     
     // add score node label into the secene
     func addSocre(){
@@ -78,6 +114,7 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
         player.physicsBody?.contactTestBitMask=PhysicsCategory.fruit // notify the listner
         player.physicsBody?.collisionBitMask=PhysicsCategory.none
         player.physicsBody?.categoryBitMask=PhysicsCategory.shuriken
+        player.physicsBody?.affectedByGravity=false
         self.addChild(player)
     }
     
@@ -100,9 +137,12 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
         fruitNode.physicsBody?.contactTestBitMask=PhysicsCategory.shuriken //notify the listener
         fruitNode.physicsBody?.collisionBitMask=PhysicsCategory.none
         fruitNode.physicsBody?.categoryBitMask=PhysicsCategory.fruit
-        print(fruitNode.position)
+        fruitNode.physicsBody?.affectedByGravity=false
         self.addChild(fruitNode)
     }
+    
+    
+ 
     
     // func to play the hit animation and somthing
     func shurikenDidCollideWithFruit(shuriken:SKSpriteNode,fruit:SKSpriteNode){
@@ -132,6 +172,8 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
             }
         }
     }
+    
+    
     
     
     //pending move of shuriken
@@ -172,7 +214,5 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
         return random()*(max-min)+min
     }
     
-    
-    // conllision detetion
     
 }

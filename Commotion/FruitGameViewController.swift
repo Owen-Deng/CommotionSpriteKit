@@ -36,6 +36,11 @@ class FruitGameViewController: UIViewController {
     }
   
     
+    @IBAction func inforButtonAction(_ sender: Any) {
+        
+        NotificationCenter.default.post(name: Notification.Name("SceneWillLostFocus"), object: self)
+    }
+    
     /*
     // MARK: - Navigation
 

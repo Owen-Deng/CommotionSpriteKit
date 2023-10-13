@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wXL-bZ-dab">
-                                <rect key="frame" x="337.66666666666669" y="108.99999999999999" width="39.333333333333314" height="39.333333333333329"/>
+                                <rect key="frame" x="337.66666666666669" y="79" width="39.333333333333314" height="39.333333333333343"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="wXL-bZ-dab" secondAttribute="height" multiplier="1:1" id="7xx-UT-POe"/>
                                 </constraints>
@@ -26,6 +26,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="info.circle.fill" catalog="system" imagePadding="0.0" buttonSize="small"/>
                                 <connections>
+                                    <action selector="inforButtonAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Lha-t6-79n"/>
                                     <segue destination="RAV-mp-fGA" kind="popoverPresentation" popoverAnchorView="wXL-bZ-dab" id="yK9-1D-f8J">
                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                     </segue>
@@ -36,7 +37,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="wXL-bZ-dab" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.1" id="6VE-Va-yKI"/>
-                            <constraint firstItem="wXL-bZ-dab" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="50" id="ua4-0T-c0r"/>
+                            <constraint firstItem="wXL-bZ-dab" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="ua4-0T-c0r"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="wXL-bZ-dab" secondAttribute="trailing" constant="16" id="v68-7X-syo"/>
                         </constraints>
                     </view>
