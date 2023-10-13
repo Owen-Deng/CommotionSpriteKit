@@ -18,6 +18,7 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
     let WATERMELON_IMAGENAME:String="Watermelon"
     let ADDFRUIT_KEYNAME:String="addFruit"
     let PAUSE_IMAGENAME:String="Pause"
+    let GAMEOVWR_IMAGENAME:String="Gameover"
     struct PhysicsCategory{
        static let fruit:UInt32=0x00000001// set the category for the collision detect
         static let shuriken:UInt32=0x00000002
@@ -26,33 +27,39 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
    
     
     var gameRunning=true //flag for the running state, using for stop or start
+    var isGameover=false// flag for the status that gameover and help to restart
     
     // seting score label
     let scoreLabel=SKLabelNode(fontNamed: "Chalkduster")
     let timeLabel=SKLabelNode(fontNamed: "Helvetica")
     var remainTime=30 // 30s of this game
     var timer:Timer?
-    var scroeNow:Int = 0{
+    var scoreNow:Int = 0{
         willSet(newValue){
             DispatchQueue.main.async {
                 self.scoreLabel.text="Score: \(newValue)"
             }
         }
     }
-    
     // this is repeatAction for adding fruit and
     lazy var  repeatAction=SKAction.repeatForever(SKAction.sequence([SKAction.run {
         self.addFruits()
     },SKAction.wait(forDuration: 2)]))
     
-    
-    lazy var player = SKSpriteNode(imageNamed:  SHURIKEN_IMAGENAME)//ninja shuriken(special dart), player controll the shuriken to move to the fruit
+    lazy var playerNode = SKSpriteNode(imageNamed:  SHURIKEN_IMAGENAME)//ninja shuriken(special dart), player controll the shuriken to move to the fruit
     lazy var pauseImageNode=SKSpriteNode(imageNamed: PAUSE_IMAGENAME)
+    lazy var gameoverImageNode=SKSpriteNode(imageNamed: GAMEOVWR_IMAGENAME)
     
+    var shurikenSpeed:Int=1 // this is default speed . and if player walk than 1k steps it will be 2
     
     
     // the skview is initialed and add the player , set the initial setting into scence
     override func didMove(to view: SKView) {
+      startGame()
+    }
+    
+    //start game from 0
+    func startGame(){
         physicsWorld.contactDelegate=self
         backgroundColor=SKColor.white
    
@@ -64,13 +71,14 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(scenewillLostFocus(_:)), name: Notification.Name("SceneWillLostFocus"), object: nil) // for receive the segue action
     }
     
+    
     // function to update the game time reminder
     @objc func updateTime(){
-        if gameRunning{
+        if gameRunning && isGameover==false{
             remainTime=remainTime-1
-            timeLabel.text="00:\(remainTime)"
-            if(remainTime==0){
-                // game over pending
+            timeLabel.text="\(remainTime)s"
+            if(remainTime==0){ // this is game over function
+                gameover() // call the gameover
             }
         }
     }
@@ -84,13 +92,23 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    func gameover(){
+         isGameover=true
+         self.removeAction(forKey: ADDFRUIT_KEYNAME)//
+         gameRunning=false
+        addGameover()
+        timer?.invalidate()
+        timer=nil
+         scoreLabel.fontSize = scoreLabel.fontSize*4
+    }
+    
     
     // set the timer
     func addTimeLabel(){
-        timeLabel.text="00:\(remainTime)"
+        timeLabel.text="\(remainTime)s"
         timeLabel.fontSize=40
         timeLabel.fontColor=SKColor.black
-        timeLabel.position=CGPoint(x: frame.midX, y: frame.maxY-frame.height*0.2)
+        timeLabel.position=CGPoint(x: frame.midX, y: frame.maxY-frame.height*0.15)
         addChild(timeLabel)
     }
     
@@ -108,14 +126,14 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
     
     // set the player
     func addPlayer(){
-        player.position=CGPoint(x: size.width*0.5, y: size.height*0.5)
-        player.size=CGSize(width: size.width*0.12, height: size.width*0.12)
-        player.physicsBody=SKPhysicsBody(rectangleOf: player.size)
-        player.physicsBody?.contactTestBitMask=PhysicsCategory.fruit // notify the listner
-        player.physicsBody?.collisionBitMask=PhysicsCategory.none
-        player.physicsBody?.categoryBitMask=PhysicsCategory.shuriken
-        player.physicsBody?.affectedByGravity=false
-        self.addChild(player)
+        playerNode.position=CGPoint(x: size.width*0.5, y: size.height*0.5)
+        playerNode.size=CGSize(width: size.width*0.12, height: size.width*0.12)
+        playerNode.physicsBody=SKPhysicsBody(rectangleOf: playerNode.size)
+        playerNode.physicsBody?.contactTestBitMask=PhysicsCategory.fruit // notify the listner
+        playerNode.physicsBody?.collisionBitMask=PhysicsCategory.none
+        playerNode.physicsBody?.categoryBitMask=PhysicsCategory.shuriken
+        playerNode.physicsBody?.affectedByGravity=false
+        self.addChild(playerNode)
     }
     
     
@@ -142,12 +160,19 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
     }
     
     
+    func addGameover(){
+        gameoverImageNode.size=CGSize(width: size.width*0.9, height: size.width*0.9)
+        gameoverImageNode.position=CGPoint(x: size.width*0.5, y: size.height*0.5)
+        addChild(gameoverImageNode)
+    }
+    
  
     
     // func to play the hit animation and somthing
     func shurikenDidCollideWithFruit(shuriken:SKSpriteNode,fruit:SKSpriteNode){
         print("hit")
         //pending to animation
+        scoreNow=scoreNow+1
         fruit.removeFromParent()
     }
     
@@ -156,10 +181,10 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
         var secondBody:SKPhysicsBody = contact.bodyB
         var isHit=true
-        if contact.bodyA.node == player {
+        if contact.bodyA.node == playerNode {
             print("BodyB is Fruit")
             secondBody=contact.bodyB
-        }else if contact.bodyB.node==player{
+        }else if contact.bodyB.node==playerNode{
             print("BodyA is Fruit")
             secondBody=contact.bodyA
         }else{
@@ -168,7 +193,7 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
         
         if isHit{
             if let fruit = secondBody.node as? SKSpriteNode{
-                shurikenDidCollideWithFruit(shuriken: self.player, fruit: fruit)
+                shurikenDidCollideWithFruit(shuriken: self.playerNode, fruit: fruit)
             }
         }
     }
@@ -193,14 +218,21 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
     
     // touch to pause the game and restart
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if gameRunning==true{
-            self.removeAction(forKey: ADDFRUIT_KEYNAME)// stop generate the fruit
+        if gameRunning==true && isGameover==false{    //pause game
+            self.removeAction(forKey: ADDFRUIT_KEYNAME)
             addPauseImage()
             gameRunning=false
-        }else {
+        }else if gameRunning==false && isGameover==false {   //resume from pasuing status
             self.run(repeatAction, withKey: ADDFRUIT_KEYNAME)
             self.removeChildren(in: [pauseImageNode])
             gameRunning=true
+        }else if isGameover==true{    //start from gameover
+            remainTime=30
+            scoreNow=0
+            removeAllChildren()
+            gameRunning=true
+            isGameover=false
+            startGame()
         }
     }
     
