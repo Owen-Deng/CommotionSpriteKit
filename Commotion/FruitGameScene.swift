@@ -18,7 +18,12 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
     let WATERMELON_IMAGENAME:String="Watermelon"
     let ADDFRUIT_KEYNAME:String="addFruit"
     let PAUSE_IMAGENAME:String="Pause"
-    let FRUIT_CATEGORY:UInt32=0x00000001
+    struct PhysicsCategory{
+       static let fruit:UInt32=0x00000001// set the category for the collision detect
+        static let shuriken:UInt32=0x00000002
+        static let none:UInt32=0
+    }
+   
     
     var gameRunning=true //flag for the running state, using for stop or start
     
@@ -69,7 +74,11 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
     func addPlayer(){
         player.position=CGPoint(x: size.width*0.5, y: size.height*0.5)
         player.size=CGSize(width: size.width*0.12, height: size.width*0.12)
-        self.addChild(player) // add the player
+        player.physicsBody=SKPhysicsBody(rectangleOf: player.size)
+        player.physicsBody?.contactTestBitMask=PhysicsCategory.fruit // notify the listner
+        player.physicsBody?.collisionBitMask=PhysicsCategory.none
+        player.physicsBody?.categoryBitMask=PhysicsCategory.shuriken
+        self.addChild(player)
     }
     
     
@@ -86,13 +95,47 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
         let fruitNode = SKSpriteNode(imageNamed: WATERMELON_IMAGENAME)
         fruitNode.size=CGSize(width: size.width*0.1, height: size.width*0.1)
         // position for fruit is random and in the whole
+        fruitNode.physicsBody=SKPhysicsBody(rectangleOf: fruitNode.size)
         fruitNode.position=randomFruitsPosition()
-        fruitNode.physicsBody?.contactTestBitMask=FRUIT_CATEGORY
-        fruitNode.physicsBody?.collisionBitMask=FRUIT_CATEGORY
-        fruitNode.physicsBody?.categoryBitMask=FRUIT_CATEGORY
+        fruitNode.physicsBody?.contactTestBitMask=PhysicsCategory.shuriken //notify the listener
+        fruitNode.physicsBody?.collisionBitMask=PhysicsCategory.none
+        fruitNode.physicsBody?.categoryBitMask=PhysicsCategory.fruit
         print(fruitNode.position)
         self.addChild(fruitNode)
     }
+    
+    // func to play the hit animation and somthing
+    func shurikenDidCollideWithFruit(shuriken:SKSpriteNode,fruit:SKSpriteNode){
+        print("hit")
+        //pending to animation
+        fruit.removeFromParent()
+    }
+    
+    
+    //contact delegat method
+    func didBegin(_ contact: SKPhysicsContact) {
+        var firstBody:SKPhysicsBody
+        var secondBody:SKPhysicsBody
+        if contact.bodyA.node == player {
+            firstBody=contact.bodyA
+            secondBody=contact.bodyB
+        }else{
+            firstBody=contact.bodyB
+            secondBody=contact.bodyA
+        }
+        
+        
+        
+        
+    }
+    
+    
+    //pending move of shuriken
+    func moveShuriken(){
+        
+    }
+    
+    
     
     
     // generat the postion about the fruit in the random of the whole scene
