@@ -19,12 +19,15 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
     let ADDFRUIT_KEYNAME:String="addFruit"
     let PAUSE_IMAGENAME:String="Pause"
     let GAMEOVWR_IMAGENAME:String="Gameover"
+    
+    // Add CMMotionManager
+        let motionManager = CMMotionManager()
+
     struct PhysicsCategory{
        static let fruit:UInt32=0x00000001// set the category for the collision detect
         static let shuriken:UInt32=0x00000002
         static let none:UInt32=0
     }
-   
     
     var gameRunning=true //flag for the running state, using for stop or start
     var isGameover=false// flag for the status that gameover and help to restart
@@ -56,7 +59,12 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
     // the skview is initialed and add the player , set the initial setting into scence
     override func didMove(to view: SKView) {
       startGame()
+        // start Core Motion
+     if motionManager.isAccelerometerAvailable {
+             motionManager.startAccelerometerUpdates()
+         }
     }
+
     
     //start game from 0
     func startGame(){
@@ -201,13 +209,29 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
     
     // move the player shurikan
     override func update(_ currentTime: TimeInterval) {
-        
-    }
+        if let accelerometerData = motionManager.accelerometerData {
+            let acceleration = accelerometerData.acceleration
+            moveShuriken(acceleration: acceleration)
+          }
+        }
     
     
     //pending move of shuriken
-    func moveShuriken(){
-        
+    func moveShuriken(acceleration: CMAcceleration) {
+        let moveSpeed: CGFloat = 5.0
+
+            // Adjustment of shuriken position according to acceleration direction
+            let newX = playerNode.position.x - CGFloat(acceleration.y) * moveSpeed
+            let newY = playerNode.position.y + CGFloat(acceleration.x) * moveSpeed
+
+            // Limiting shuriken's range of movement
+            let minX = playerNode.size.width / 2
+            let maxX = size.width - playerNode.size.width / 2
+            let minY = playerNode.size.height / 2
+            let maxY = size.height - playerNode.size.height / 2
+
+            playerNode.position.x = max(minX, min(newX, maxX))
+            playerNode.position.y = max(minY, min(newY, maxY))
     }
     
     
