@@ -218,11 +218,11 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
     
     //pending move of shuriken
     func moveShuriken(acceleration: CMAcceleration) {
-        let moveSpeed: CGFloat = 5.0
+            let moveSpeed: CGFloat = 5.0
 
             // Adjustment of shuriken position according to acceleration direction
-            let newX = playerNode.position.x - CGFloat(acceleration.y) * moveSpeed
-            let newY = playerNode.position.y + CGFloat(acceleration.x) * moveSpeed
+            let newX = playerNode.position.x + CGFloat(acceleration.x) * moveSpeed
+            let newY = playerNode.position.y + CGFloat(acceleration.y) * moveSpeed // 将这里的符号取反
 
             // Limiting shuriken's range of movement
             let minX = playerNode.size.width / 2
