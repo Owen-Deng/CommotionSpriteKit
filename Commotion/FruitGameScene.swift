@@ -53,7 +53,7 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
     lazy var pauseImageNode=SKSpriteNode(imageNamed: PAUSE_IMAGENAME)
     lazy var gameoverImageNode=SKSpriteNode(imageNamed: GAMEOVWR_IMAGENAME)
     
-    var shurikenSpeed:Int=1 // this is default speed . and if player walk than 1k steps it will be 2
+    var shurikenSpeed:CGFloat=5 // this is default speed . and if player walk than 1k steps it will be 10
     
     
     // the skview is initialed and add the player , set the initial setting into scence
@@ -218,11 +218,11 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
     
     //pending move of shuriken
     func moveShuriken(acceleration: CMAcceleration) {
-            let moveSpeed: CGFloat = 5.0
+            let moveSpeed: CGFloat = shurikenSpeed
 
             // Adjustment of shuriken position according to acceleration direction
             let newX = playerNode.position.x + CGFloat(acceleration.x) * moveSpeed
-            let newY = playerNode.position.y + CGFloat(acceleration.y) * moveSpeed // 将这里的符号取反
+            let newY = playerNode.position.y + CGFloat(acceleration.y) * moveSpeed 
 
             // Limiting shuriken's range of movement
             let minX = playerNode.size.width / 2
@@ -234,6 +234,18 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
             playerNode.position.y = max(minY, min(newY, maxY))
     }
     
+    // this func can get the today's steps to encourage the gamer take more walks
+    func updateShurikenSpeed(){
+      var  motionModel=MotionModel.sharedInstance
+        motionModel.updateTodaySteps(){(steps:Int64) in
+            DispatchQueue.main.async { [self] in
+                if steps>=1000{
+                    shurikenSpeed=10.0
+                }
+            }
+        }
+    }
+   
     
     
     

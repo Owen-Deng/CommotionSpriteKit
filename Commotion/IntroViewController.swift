@@ -13,10 +13,19 @@ class IntroViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        var  motionModel=MotionModel.sharedInstance
+          motionModel.updateTodaySteps(){(steps:Int64) in
+              DispatchQueue.main.async { [self] in
+                  if steps>=1000{
+                      inforLabel.text="You have a faster shuriken now. Keep walking" // give the infor about the shuriken speed
+                  }
+              }
+          }
         // Do any additional setup after loading the view.
     }
     
-
+    @IBOutlet weak var inforLabel: UILabel!
+    
     /*
     // MARK: - Navigation
 
