@@ -17,6 +17,7 @@ class FruitGameViewController: UIViewController {
         static func lockOrientation(_ orientation: UIInterfaceOrientationMask) {
             if let delegate = UIApplication.shared.delegate as? AppDelegate {
                 delegate.orientationLock = orientation
+               
             }
         }
         /// OPTIONAL Added method to adjust lock and rotate to the desired orientation
@@ -31,16 +32,37 @@ class FruitGameViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-            AppUtility.lockOrientation(.portrait)
+        AppUtility.lockOrientation(.portrait)
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         AppUtility.lockOrientation(.all)
     }
     
+    var isgameLoaded=false//  flag for the game is loaded
     override func viewDidLoad() {
         super.viewDidLoad()
+        AppUtility.lockOrientation(.portrait)
+        if UIDevice.current.orientation == .portrait{  // when enter in the game is portrait directly load game
+            loadGameScene()
+            isgameLoaded=true
+        }
         
+        // if change the orientation, it should notice the function to load later .
+        NotificationCenter.default.addObserver(self, selector: #selector(orientationDidChange), name: UIDevice.orientationDidChangeNotification, object: nil)
+    }
+    
+    //set the orientation change when start load game
+    @objc func orientationDidChange() {
+            let currentOrientation = UIDevice.current.orientation
+                if UIDevice.current.orientation == .portrait && isgameLoaded==false{
+                        loadGameScene()
+                        isgameLoaded=true
+                }
+    }
+    
+    //load game
+    func loadGameScene(){
         // Do any additional setup after loading the view.
         //load the skview
         let scene=FruitGameScene(size: view.bounds.size)
@@ -50,9 +72,7 @@ class FruitGameViewController: UIViewController {
         skView.ignoresSiblingOrder=true
         scene.scaleMode = .resizeFill
         skView.presentScene(scene)
-        
     }
-    
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask{
         return .portrait
