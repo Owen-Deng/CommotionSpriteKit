@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 53;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,11 @@
 		B62ED3A81D7F299D00B503DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B62ED3A61D7F299D00B503DF /* Main.storyboard */; };
 		B62ED3AA1D7F299D00B503DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B62ED3A91D7F299D00B503DF /* Assets.xcassets */; };
 		B62ED3AD1D7F299D00B503DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B62ED3AB1D7F299D00B503DF /* LaunchScreen.storyboard */; };
+		CC05C77A2AD7168100D6C605 /* FruitGame.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC05C7792AD7168100D6C605 /* FruitGame.storyboard */; };
+		CC05C77C2AD716BE00D6C605 /* FruitGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC05C77B2AD716BE00D6C605 /* FruitGameViewController.swift */; };
+		CC05C77E2AD71B3B00D6C605 /* FruitGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC05C77D2AD71B3B00D6C605 /* FruitGameScene.swift */; };
+		CC05C7802AD912FE00D6C605 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC05C77F2AD912FE00D6C605 /* IntroViewController.swift */; };
+		CCDC004B2ADC4CF600E6AFD1 /* hitSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = CCDC004A2ADC4CF600E6AFD1 /* hitSound.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +31,11 @@
 		B62ED3A91D7F299D00B503DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B62ED3AC1D7F299D00B503DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B62ED3AE1D7F299D00B503DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC05C7792AD7168100D6C605 /* FruitGame.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FruitGame.storyboard; sourceTree = "<group>"; };
+		CC05C77B2AD716BE00D6C605 /* FruitGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitGameViewController.swift; sourceTree = "<group>"; };
+		CC05C77D2AD71B3B00D6C605 /* FruitGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitGameScene.swift; sourceTree = "<group>"; };
+		CC05C77F2AD912FE00D6C605 /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
+		CCDC004A2ADC4CF600E6AFD1 /* hitSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hitSound.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +68,11 @@
 				B62ED3A91D7F299D00B503DF /* Assets.xcassets */,
 				B62ED3AB1D7F299D00B503DF /* LaunchScreen.storyboard */,
 				B62ED3AE1D7F299D00B503DF /* Info.plist */,
+				CC05C7792AD7168100D6C605 /* FruitGame.storyboard */,
+				CC05C77F2AD912FE00D6C605 /* IntroViewController.swift */,
+				CC05C77D2AD71B3B00D6C605 /* FruitGameScene.swift */,
+				CC05C77B2AD716BE00D6C605 /* FruitGameViewController.swift */,
+				CCDC004A2ADC4CF600E6AFD1 /* hitSound.wav */,
 			);
 			path = Commotion;
 			sourceTree = "<group>";
@@ -95,7 +110,6 @@
 				TargetAttributes = {
 					B62ED39E1D7F299D00B503DF = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = F69WJ27LN4;
 						LastSwiftMigration = 1170;
 					};
 				};
@@ -124,6 +138,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC05C77A2AD7168100D6C605 /* FruitGame.storyboard in Resources */,
+				CCDC004B2ADC4CF600E6AFD1 /* hitSound.wav in Resources */,
 				B62ED3AD1D7F299D00B503DF /* LaunchScreen.storyboard in Resources */,
 				B62ED3AA1D7F299D00B503DF /* Assets.xcassets in Resources */,
 				B62ED3A81D7F299D00B503DF /* Main.storyboard in Resources */,
@@ -138,6 +154,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5AA773182AD610B6006B6F03 /* MotionModel.swift in Sources */,
+				CC05C77E2AD71B3B00D6C605 /* FruitGameScene.swift in Sources */,
+				CC05C7802AD912FE00D6C605 /* IntroViewController.swift in Sources */,
+				CC05C77C2AD716BE00D6C605 /* FruitGameViewController.swift in Sources */,
 				B62ED3A51D7F299D00B503DF /* ViewController.swift in Sources */,
 				B62ED3A31D7F299D00B503DF /* AppDelegate.swift in Sources */,
 				5AA7731A2AD617E1006B6F03 /* ConfigModel.swift in Sources */,
@@ -282,11 +301,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = F69WJ27LN4;
 				INFOPLIST_FILE = Commotion/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FruitNinjaFrenzy;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.action-games";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = SMU.Commotion;
 				PRODUCT_NAME = "$(TARGET_NAME)SpriteKit";
 				SWIFT_VERSION = 5.0;
@@ -299,11 +321,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = F69WJ27LN4;
 				INFOPLIST_FILE = Commotion/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FruitNinjaFrenzy;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.action-games";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = SMU.Commotion;
 				PRODUCT_NAME = "$(TARGET_NAME)SpriteKit";
 				SWIFT_VERSION = 5.0;
