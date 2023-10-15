@@ -9,6 +9,7 @@
 import Foundation
 import SpriteKit
 import CoreMotion
+import AVFoundation
 
 class FruitGameScene:SKScene, SKPhysicsContactDelegate {
     
@@ -170,7 +171,6 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
         fruitNode.physicsBody?.affectedByGravity=false
         self.addChild(fruitNode)
         let randomForce = CGVector(dx: random(min: -90, max:90), dy: random(min: -90, max: 90))  // using dynmaic node with movement of fruit
-        print(randomForce)
         fruitNode.physicsBody?.applyForce(randomForce)
     }
     
@@ -187,8 +187,11 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
     func shurikenDidCollideWithFruit(shuriken:SKSpriteNode,fruit:SKSpriteNode){
         print("hit")
         //pending to animation
-        scoreNow=scoreNow+1
-        fruit.removeFromParent()
+        if isPaused==false && gameRunning==true{
+            scoreNow=scoreNow+1
+            playHitSound()
+            fruit.removeFromParent()
+        }
     }
     
     
@@ -197,10 +200,10 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
         var secondBody:SKPhysicsBody = contact.bodyB
         var isHit=true
         if contact.bodyA.node == playerNode {
-            print("BodyB is Fruit")
+           // print("BodyB is Fruit")
             secondBody=contact.bodyB
         }else if contact.bodyB.node==playerNode{
-            print("BodyA is Fruit")
+          //  print("BodyA is Fruit")
             secondBody=contact.bodyA
         }else{
             isHit=false
@@ -213,6 +216,30 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    
+    func playHitSound(){
+        DispatchQueue.global(qos: .background).async {
+            var audioPlayer: AVAudioPlayer?
+            if let path = Bundle.main.path(forResource: "hitSound", ofType: "wav") {
+                let url = URL(fileURLWithPath: path)
+                do {
+                    // Initialize the audio player
+                    audioPlayer = try AVAudioPlayer(contentsOf: url)
+                    
+                    // Prepare and play the audio
+                    audioPlayer?.prepareToPlay()
+                    audioPlayer?.volume = 0.5
+                    // Play the audio on a separate dispatch queue
+                    audioPlayer?.play()
+                    Thread.sleep(forTimeInterval: audioPlayer!.duration)
+                } catch {
+                    print("Error loading audio file: \(error.localizedDescription)")
+                }
+            } else {
+                print("Audio file not found.")
+            }
+        }
+    }
     
     // move the player shurikan
     override func update(_ currentTime: TimeInterval) {
