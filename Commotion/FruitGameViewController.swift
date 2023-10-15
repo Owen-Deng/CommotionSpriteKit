@@ -29,7 +29,7 @@ class FruitGameViewController: UIViewController {
             UINavigationController.attemptRotationToDeviceOrientation()
         }
     }
-    
+    //lock the orientation in portrait 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         AppUtility.lockOrientation(.portrait)
@@ -40,9 +40,9 @@ class FruitGameViewController: UIViewController {
     }
     
     var isgameLoaded=false//  flag for the game is loaded
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        AppUtility.lockOrientation(.portrait)
         if UIDevice.current.orientation == .portrait{  // when enter in the game is portrait directly load game
             loadGameScene()
             isgameLoaded=true
@@ -74,6 +74,7 @@ class FruitGameViewController: UIViewController {
         skView.presentScene(scene)
     }
     
+    // change and lock the portrat for game
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask{
         return .portrait
     }
@@ -85,7 +86,7 @@ class FruitGameViewController: UIViewController {
         return .portrait
     }
   
-    
+    // segue to infor page
     @IBAction func inforButtonAction(_ sender: Any) {
         
         NotificationCenter.default.post(name: Notification.Name("SceneWillLostFocus"), object: self)
