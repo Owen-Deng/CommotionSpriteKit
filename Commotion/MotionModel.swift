@@ -61,7 +61,7 @@ class MotionModel: NSObject {
     // update current status
     func updateCurrentStatus(update: @escaping (String) -> ()){
         if !CMMotionActivityManager.isActivityAvailable(){
-            update("Unknown")
+            update("❔")
             return
         }
         
@@ -74,30 +74,30 @@ class MotionModel: NSObject {
             var status:Array<String> = []
             if let unwrappedActivity = activity {
                 // Print if we are walking or running
-                //print("%@",unwrappedActivity.description)
+                //print("%@",unwrappedActivity.)
                 if unwrappedActivity.walking{
-                    status.append("Walking")
+                    status.append("🚶")
                 }
                 if unwrappedActivity.running{
-                    status.append("Running")
+                    status.append("🏃")
                 }
                 if unwrappedActivity.automotive{
-                    status.append("Automotive")
+                    status.append("🚗")
                 }
                 if unwrappedActivity.cycling{
-                    status.append("Cycling")
+                    status.append("🚴")
                 }
                 if unwrappedActivity.stationary{
-                    status.append("Stationary")
+                    status.append("🧍")
                 }
                 if unwrappedActivity.unknown{
-                    status.append("Unknown")
+                    status.append("❔")
                 }
             }
             if status.count >= 1{
-                update(status.joined(separator: ",")) // None of above is true, set the status to unknown
+                update(status.joined(separator: "")) // None of above is true, set the status to unknown
             }else{
-                update("Unknown")
+                update("❔")
             }
         }
     }
