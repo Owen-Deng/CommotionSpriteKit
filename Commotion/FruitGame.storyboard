@@ -123,6 +123,9 @@
                             <constraint firstItem="E0W-pX-NXk" firstAttribute="leading" secondItem="8C6-tz-9N0" secondAttribute="trailing" id="uen-3q-Voa"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="inforLabel" destination="jtx-Vr-km3" id="9QG-9u-Zhg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xJX-eM-Xlt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

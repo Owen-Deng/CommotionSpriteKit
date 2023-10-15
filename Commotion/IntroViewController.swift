@@ -13,7 +13,7 @@ class IntroViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        var  motionModel=MotionModel.sharedInstance
+        let  motionModel=MotionModel.sharedInstance
           motionModel.updateTodaySteps(){(steps:Int64) in
               DispatchQueue.main.async { [self] in
                   if steps>=1000{

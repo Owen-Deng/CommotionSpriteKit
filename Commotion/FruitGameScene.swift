@@ -74,6 +74,8 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
         self.addSocre() //add the score to save the date
         self.addPlayer()  // add the player blade on the stage
         self.addTimeLabel() // add the timer to reminder player this game is 30seconds game
+        // use three type of timer to update the addfruits function , update the time label, update the shuriten movement.
+        // runrepeatAction & timer & override update.
         self.run(repeatAction,withKey: ADDFRUIT_KEYNAME)    //when start game directly start the game
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats:true) //for update the game
         NotificationCenter.default.addObserver(self, selector: #selector(scenewillLostFocus(_:)), name: Notification.Name("SceneWillLostFocus"), object: nil) // for receive the segue action
@@ -160,11 +162,16 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
         // position for fruit is random and in the whole
         fruitNode.physicsBody=SKPhysicsBody(rectangleOf: fruitNode.size)
         fruitNode.position=randomFruitsPosition()
+        fruitNode.physicsBody?.isDynamic=true
+        fruitNode.physicsBody?.mass=0.1
         fruitNode.physicsBody?.contactTestBitMask=PhysicsCategory.shuriken //notify the listener
         fruitNode.physicsBody?.collisionBitMask=PhysicsCategory.none
         fruitNode.physicsBody?.categoryBitMask=PhysicsCategory.fruit
         fruitNode.physicsBody?.affectedByGravity=false
         self.addChild(fruitNode)
+        let randomForce = CGVector(dx: random(min: -90, max:90), dy: random(min: -90, max: 90))  // using dynmaic node with movement of fruit
+        print(randomForce)
+        fruitNode.physicsBody?.applyForce(randomForce)
     }
     
     
@@ -218,11 +225,12 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
     
     //pending move of shuriken
     func moveShuriken(acceleration: CMAcceleration) {
+        if gameRunning && isPaused==false{           // for the pasuing mode
             let moveSpeed: CGFloat = shurikenSpeed
 
             // Adjustment of shuriken position according to acceleration direction
             let newX = playerNode.position.x + CGFloat(acceleration.x) * moveSpeed
-            let newY = playerNode.position.y + CGFloat(acceleration.y) * moveSpeed 
+            let newY = playerNode.position.y + CGFloat(acceleration.y) * moveSpeed
 
             // Limiting shuriken's range of movement
             let minX = playerNode.size.width / 2
@@ -232,11 +240,12 @@ class FruitGameScene:SKScene, SKPhysicsContactDelegate {
 
             playerNode.position.x = max(minX, min(newX, maxX))
             playerNode.position.y = max(minY, min(newY, maxY))
+        }
     }
     
     // this func can get the today's steps to encourage the gamer take more walks
     func updateShurikenSpeed(){
-      var  motionModel=MotionModel.sharedInstance
+      let  motionModel=MotionModel.sharedInstance
         motionModel.updateTodaySteps(){(steps:Int64) in
             DispatchQueue.main.async { [self] in
                 if steps>=1000{
