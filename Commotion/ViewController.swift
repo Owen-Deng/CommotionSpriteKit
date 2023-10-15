@@ -5,6 +5,7 @@
 //  Created by Eric Larson on 9/6/16.
 //  Copyright © 2016 Eric Larson. All rights reserved.
 //
+// Our team name is Trio , and Member is Chuanqi Deng, Rongwei Ji, Yunfeng Huang.
 
 import UIKit
 import CoreMotion
