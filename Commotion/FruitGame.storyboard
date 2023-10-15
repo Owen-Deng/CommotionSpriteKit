@@ -51,7 +51,7 @@
             <objects>
                 <viewController id="RAV-mp-fGA" customClass="IntroViewController" customModule="CommotionSpriteKit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rd0-65-SRG">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fruit Ninja Frenzy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1s2-j2-9MO">
@@ -137,7 +137,7 @@
         <image name="Shuriken" width="2048" height="2048"/>
         <image name="Title" width="512" height="512"/>
         <image name="Watermelon" width="95" height="95"/>
-        <image name="info.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="info.circle.fill" catalog="system" width="32" height="32"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
