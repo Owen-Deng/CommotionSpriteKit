@@ -220,10 +220,10 @@
             </objects>
             <point key="canvasLocation" x="1448.8" y="308.9955022488756"/>
         </scene>
-        <!--Storyboard Reference-->
+        <!--FruitGame-->
         <scene sceneID="ggz-U8-1iD">
             <objects>
-                <viewControllerPlaceholder id="sTI-Cr-93y" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="FruitGame" id="sTI-Cr-93y" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="S3h-Gw-W9u"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yMA-ic-6f4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
